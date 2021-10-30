@@ -24,7 +24,6 @@ function App() {
   const [child5Nume, setChild5Nume] = useState("");
   const [Child5Age, setChild5Age] = useState("");
 
-  const [childNumber, setChildNumber] = useState(0);
   const [addChild, setAddChild] = useState(true);
   const [addChild1, setAddChild1] = useState(false);
   const [addChild2, setAddChild2] = useState(false);
@@ -153,79 +152,55 @@ function App() {
       setError(true);
     }
 
-    if (error === false) {
-      setParentNume("");
-      setParentAge("");
-      setChild1Nume("");
-      setChild1Age("");
-      setChild2Nume("");
-      setChild2Age("");
-      setChild3Nume("");
-      setChild3Age("");
-      setChild4Nume("");
-      setChild4Age("");
-      setChild5Nume("");
-      setChild5Age("");
-    } 
-
-
   }
 
   // add or delete childe info 
 
   const addNextChild = () => {
-    setChildNumber(childNumber + 1);
-    // console.log(childNumber)
-    if (childNumber === 5) {
+    if (addChild1 === false) {
+      setAddChild1(true);
+    } else if (addChild2 === false ) {
+      setAddChild2(true);
+    } else if ( addChild3 === false) {
+      setAddChild3(true);
+    } else if ( addChild4 === false) {
+      setAddChild4(true);
+    } else if (addChild5 === false) {
       setAddChild5(true);
       setAddChild(false);
-      setChildNumber(childNumber - 1);
-    } else if (childNumber === 1) {
-      setAddChild1(true);
-    } else if (childNumber === 2) {
-      setAddChild2(true);
-    } else if (childNumber === 3) {
-      setAddChild3(true);
-    } else {
-      setAddChild4(true);
     }
+
+    if ( addChild1 === true && addChild2 === true && addChild3 === true && addChild4 === true && addChild5 === true)  {
+      setAddChild(false);
+    }
+
   }
 
 
   // delete childe info 
   const deletedChild = e => {
     let id = e.target.id;
-    console.log(e.target.id)
+    setAddChild(true);
     if (id === "01") {
       setAddChild1(false);
       setChild1Nume("");
       setChild1Age("");
-      setAddChild(true);
-      setChildNumber(childNumber - 1);
     } else if (id === "02") {
       setAddChild2(false);
       setChild2Nume("");
       setChild2Age("");
-      setAddChild(true);
-      setChildNumber(childNumber - 1);
     } else if (id === "03") {
       setAddChild3(false);
       setChild3Nume("");
       setChild3Age("");
-      setAddChild(true);
-      setChildNumber(childNumber - 1);
     } else if (id === "04") {
       setAddChild4(false);
       setChild4Nume("");
       setChild4Age("");
-      setAddChild(true);
-      setChildNumber(childNumber - 1);
-    } else {
+    } else  if (id === "05") {
       setAddChild5(false);
       setChild5Nume("");
       setChild5Age("");
-      setAddChild(true);
-      setChildNumber(childNumber - 1);
     }
   }
 
